@@ -4,12 +4,12 @@ public class HugeInteger implements Comparable<HugeInteger>{
 
     public static int digit_operations;
 
-    private int[] huge_int;
+    private int[] hugeInt;
 
 
         public HugeInteger(String s){
 
-            huge_int = new int[s.length()];
+            hugeInt = new int[s.length()];
             this.fill(s);
 
         }
@@ -17,10 +17,10 @@ public class HugeInteger implements Comparable<HugeInteger>{
 
         public void fill(String s){
 
-            for(int i = 0; i < huge_int.length; i++){
+            for(int i = 0; i < hugeInt.length; i++){
 
                 int toFill = Character.getNumericValue(s.charAt(i));
-                this.huge_int[i] = toFill;
+                this.hugeInt[i] = toFill;
 
             }
 
@@ -30,9 +30,34 @@ public class HugeInteger implements Comparable<HugeInteger>{
         
         public int compareTo(HugeInteger h){
 
-            return 0;
+            if(this.hugeInt.length != h.hugeInt.length){
+                    return compareLen(this.hugeInt, h.hugeInt);
+            }
+
+            int i = 0;
+
+            while(this.hugeInt[i] == h.hugeInt[i]){
+                    if(i == this.hugeInt.length - 1){return 0;}
+                        ++i;
+            }
+                    return compareVals(this.hugeInt[i], h.hugeInt[i]);
 
         }
+
+        private int compareVals(int i, int j){
+
+            if(i > j){return 1;}
+                return -1;
+        }
+
+
+        private int compareLen(int[] arr1, int[] arr2){
+
+                if(arr1.length > arr2.length){return 1;}
+
+                    return -1;
+        }
+
 
         public int add(HugeInteger h){
 
@@ -62,11 +87,11 @@ public class HugeInteger implements Comparable<HugeInteger>{
 
         public String toString(){
 
-            StringBuilder hugeInt = new StringBuilder(this.huge_int.length);
+            StringBuilder hugeInt = new StringBuilder(this.hugeInt.length);
 
-            for(int i = 0; i < huge_int.length; i++){
+            for(int i = 0; i < this.hugeInt.length; i++){
 
-                hugeInt.append(this.huge_int[i]);
+                hugeInt.append(this.hugeInt[i]);
 
             }
 
