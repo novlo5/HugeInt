@@ -6,14 +6,15 @@ public class hugeTest{
 
 
     
-        HugeInteger a = new HugeInteger("1234");
-        String b = a.toString();
+        HugeInteger a = new HugeInteger("10000");
+        HugeInteger b = new HugeInteger("120");
 
-        System.out.println(b);
-
-
-
-
+        //System.out.println(a.toString());
+       //System.out.println(a.add(b));
+       //System.out.println(a.subtract(b));
+        System.out.println(a.multiply(b));
+        System.out.println(a.fastMultiply(b));
+        
 
     }  
 }
